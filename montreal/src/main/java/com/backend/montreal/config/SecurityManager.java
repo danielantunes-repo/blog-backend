@@ -16,17 +16,15 @@ import com.backend.montreal.auth.LoginRepository;
 
 @Configuration
 public class SecurityManager {
-	
+
 	@Autowired
 	private LoginRepository loginRepository;
-	
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
-	
 	@Bean
 	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -40,12 +38,10 @@ public class SecurityManager {
 		return config.getAuthenticationManager();
 	}
 
-
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return username -> loginRepository.findByUsername(username)
-				.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado") );
+				.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 	}
-
 
 }

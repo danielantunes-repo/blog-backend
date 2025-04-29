@@ -1,6 +1,5 @@
 package com.backend.montreal.auth;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -15,94 +14,79 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
 
 @Entity
-public class Usuario implements UserDetails{
-	
+public class Usuario implements UserDetails {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
+
+	@Column(nullable = false, unique = true)
+	@Email(message = "O email deve ser válido")
 	private String username;
 	private String password;
-	private String foto;
-	
+
 	@Column(nullable = false)
-    private String role = "ROLE_USER";
-	
-	 @JsonIgnore
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Post> posts;
-    
+	private String role = "ROLE_USER";
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Post> posts;
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<>();
-	    authorities.add(new SimpleGrantedAuthority(this.role));
-	    return authorities;
+		authorities.add(new SimpleGrantedAuthority(this.role));
+		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
 		return password;
 	}
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return username;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
-	
-	
-	
-	
-	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
 	}
 
 	public Long getId() {
@@ -129,16 +113,12 @@ public class Usuario implements UserDetails{
 		this.password = password;
 	}
 
-	public String getFoto() {
-		return foto;
+	public List<Post> getPosts() {
+		return posts;
 	}
 
-	public void setFoto(String foto) {
-		this.foto = foto;
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
-	
-	
-
-
 
 }

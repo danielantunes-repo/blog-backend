@@ -22,10 +22,10 @@ public class LoginController {
 	public ResponseEntity<String> logar(@RequestBody Login login) {
 		try {
 			return ResponseEntity.ok(loginService.logar(login));
-		}catch(AuthenticationException ex) {
+		} catch (AuthenticationException ex) {
 			System.out.println(ex.getMessage());
 			return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}

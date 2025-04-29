@@ -16,64 +16,65 @@ import jakarta.persistence.EntityNotFoundException;
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-    
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
-    @Override
-    public Usuario register(UsuarioDTO usuarioDTO) {
-        Usuario usuario = new Usuario();
-        usuario.setName(usuarioDTO.getName());
-        usuario.setUsername(usuarioDTO.getUsername());
-        usuario.setPassword(passwordEncoder.encode(usuarioDTO.getPassword()));
-        usuario.setFoto(usuarioDTO.getFoto());
-        usuario.setRole("ROLE_USER"); // Define a role padrão
-        return usuarioRepository.save(usuario);
-    }
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
-    @Override
-    public List<Usuario> getAllUsuarios() {
-        return usuarioRepository.findAll();
-    }
+	@Override
+	public Usuario register(UsuarioDTO usuarioDTO) {
+		Usuario usuario = new Usuario();
+		usuario.setName(usuarioDTO.getName());
+		usuario.setUsername(usuarioDTO.getUsername());
+		usuario.setPassword(passwordEncoder.encode(usuarioDTO.getPassword()));
+		usuario.setRole("ROLE_USER");
+		return usuarioRepository.save(usuario);
+	}
 
-    @Override
-    public Usuario getUsuarioById(Long id) {
-        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
-        if (optionalUsuario.isPresent()) {
-            return optionalUsuario.get();
-        } else {
-            throw new EntityNotFoundException("Usuário não encontrado");
-        }
-    }
+	@Override
+	public List<Usuario> getAllUsuarios() {
+		return usuarioRepository.findAll();
+	}
 
-    @Override
-    public Usuario updateUsuario(Long id, Usuario updatedUsuario) {
-        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
-        if (optionalUsuario.isPresent()) {
-            Usuario existingUsuario = optionalUsuario.get();
-            existingUsuario.setName(updatedUsuario.getName());
-            existingUsuario.setUsername(updatedUsuario.getUsername());
-            existingUsuario.setPassword(updatedUsuario.getPassword());
-            existingUsuario.setFoto(updatedUsuario.getFoto());
-            return usuarioRepository.save(existingUsuario);
-        } else {
-            throw new EntityNotFoundException("Usuário não encontrado para edição");
-        }
-    }
+	@Override
+	public Usuario getUsuarioById(Long id) {
+		Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+		if (optionalUsuario.isPresent()) {
+			return optionalUsuario.get();
+		} else {
+			throw new EntityNotFoundException("Usuário não encontrado");
+		}
+	}
 
-    @Override
-    public void deleteUsuario(Long id) {
-        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
-        if (optionalUsuario.isPresent()) {
-            usuarioRepository.deleteById(id);
-        } else {
-            throw new EntityNotFoundException("Usuário não encontrado para exclusão");
-        }
-    }
-    
-   
-    
-    
+	@Override
+	public Usuario updateUsuario(Long id, Usuario updatedUsuario) {
+		Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+		if (optionalUsuario.isPresent()) {
+			Usuario existingUsuario = optionalUsuario.get();
+			existingUsuario.setName(updatedUsuario.getName());
+			existingUsuario.setUsername(updatedUsuario.getUsername());
+			existingUsuario.setPassword(updatedUsuario.getPassword());
+			return usuarioRepository.save(existingUsuario);
+		} else {
+			throw new EntityNotFoundException("Usuário não encontrado para edição");
+		}
+	}
+
+	@Override
+	public void deleteUsuario(Long id) {
+		Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+		if (optionalUsuario.isPresent()) {
+			usuarioRepository.deleteById(id);
+		} else {
+			throw new EntityNotFoundException("Usuário não encontrado para exclusão");
+		}
+	}
+
+	@Override
+	public Optional<UsuarioDTO> findUsuarioByUsername(String username) {
+		Optional<Usuario> optionalUsuario = usuarioRepository.findByUsername(username);
+		return optionalUsuario.map(UsuarioDTO::new);
+	}
+
 }

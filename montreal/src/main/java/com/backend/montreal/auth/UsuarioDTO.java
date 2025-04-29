@@ -2,42 +2,40 @@ package com.backend.montreal.auth;
 
 public class UsuarioDTO {
 
-    private String name;
-    private String username;
-    private String password;
-    private String foto;
+	private String name;
+	private String username;
+	private String password;
 
-    // Getters e Setters
-    public String getName() {
-        return name;
-    }
+	public UsuarioDTO() {
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public UsuarioDTO(Usuario usuario) {
+		this.name = usuario.getName();
+		this.username = usuario.getUsername();
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getFoto() {
-        return foto;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 }
-
