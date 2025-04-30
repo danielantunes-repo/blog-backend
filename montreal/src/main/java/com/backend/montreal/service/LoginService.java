@@ -1,11 +1,15 @@
-package com.backend.montreal.auth;
+package com.backend.montreal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+
 import com.backend.montreal.config.JwtServiceGenerator;
+import com.backend.montreal.entity.Login;
+import com.backend.montreal.entity.Usuario;
+import com.backend.montreal.repository.LoginRepository;
 
 @Service
 public class LoginService {

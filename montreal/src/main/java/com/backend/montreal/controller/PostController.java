@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.backend.montreal.auth.Usuario;
 import com.backend.montreal.dto.PostRequest;
 import com.backend.montreal.entity.Post;
+import com.backend.montreal.entity.Usuario;
 import com.backend.montreal.repository.PostRepository;
 import com.backend.montreal.repository.UsuarioRepository;
 import com.backend.montreal.service.PostService;
@@ -30,7 +30,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/api/post")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class PostController {
 
 	@Autowired

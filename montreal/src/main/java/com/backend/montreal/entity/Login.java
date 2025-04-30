@@ -1,4 +1,4 @@
-package com.backend.montreal.auth;
+package com.backend.montreal.entity;
 
 import lombok.Getter;
 import lombok.Setter;

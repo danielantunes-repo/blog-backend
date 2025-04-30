@@ -1,4 +1,4 @@
-package com.backend.montreal.auth;
+package com.backend.montreal.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,7 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.backend.montreal.entity.Post;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;

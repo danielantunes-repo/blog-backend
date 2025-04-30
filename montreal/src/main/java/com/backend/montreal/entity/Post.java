@@ -2,7 +2,6 @@ package com.backend.montreal.entity;
 
 import java.util.Date;
 
-import com.backend.montreal.auth.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;

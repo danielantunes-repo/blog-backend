@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.backend.montreal.auth.Usuario;
-import com.backend.montreal.auth.UsuarioDTO;
+import com.backend.montreal.dto.UsuarioDTO;
+import com.backend.montreal.entity.Usuario;
 import com.backend.montreal.repository.UsuarioRepository;
 import com.backend.montreal.service.UsuarioService;
 
@@ -17,7 +17,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class UsuarioController {
 
 	@Autowired

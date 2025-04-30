@@ -3,8 +3,8 @@ package com.backend.montreal.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.backend.montreal.auth.Usuario;
-import com.backend.montreal.auth.UsuarioDTO;
+import com.backend.montreal.dto.UsuarioDTO;
+import com.backend.montreal.entity.Usuario;
 
 public interface UsuarioService {
 	Usuario register(UsuarioDTO usuarioDTO);

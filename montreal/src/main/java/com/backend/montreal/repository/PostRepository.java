@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.backend.montreal.auth.Usuario;
 import com.backend.montreal.entity.Post;
+import com.backend.montreal.entity.Usuario;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 	Optional<Post> findByTituloAndAutor(String titulo, Usuario autor);

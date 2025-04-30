@@ -1,4 +1,6 @@
-package com.backend.montreal.auth;
+package com.backend.montreal.dto;
+
+import com.backend.montreal.entity.Usuario;
 
 public class UsuarioDTO {
 

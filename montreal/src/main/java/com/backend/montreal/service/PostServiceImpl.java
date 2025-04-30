@@ -13,8 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.backend.montreal.auth.Usuario;
 import com.backend.montreal.entity.Post;
+import com.backend.montreal.entity.Usuario;
 import com.backend.montreal.repository.PostRepository;
 import com.backend.montreal.repository.UsuarioRepository;
 

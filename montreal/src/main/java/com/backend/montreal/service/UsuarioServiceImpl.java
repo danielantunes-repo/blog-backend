@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.backend.montreal.auth.Usuario;
-import com.backend.montreal.auth.UsuarioDTO;
+import com.backend.montreal.dto.UsuarioDTO;
+import com.backend.montreal.entity.Usuario;
 import com.backend.montreal.repository.UsuarioRepository;
 
 import jakarta.persistence.EntityNotFoundException;
