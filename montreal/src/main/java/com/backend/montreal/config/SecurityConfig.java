@@ -35,7 +35,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests((requests) -> 
 				requests.requestMatchers("/api/login", "/error", "/favicon.ico").permitAll()
 		        		.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-						.requestMatchers(HttpMethod.POST,"/api/register").permitAll().anyRequest().authenticated())
+						.requestMatchers("/api/register").permitAll().anyRequest().authenticated())
 				.authenticationProvider(authenticationProvider)
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 				.sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
