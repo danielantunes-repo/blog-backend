@@ -11,7 +11,7 @@ RUN mvn dependency:go-offline
 COPY src /app/src
 
 # Compile o código
-RUN mvn clean package 
+RUN mvn clean package  
 
 # Etapa 2: Imagem final
 FROM openjdk:17-jdk-slim
