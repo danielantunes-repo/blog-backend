@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +23,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 
 @Entity
+@EntityScan(basePackages = "com.backend.montreal.model") 
+@EnableJpaRepositories(basePackages = "com.backend.montreal.repository")
 public class Usuario implements UserDetails {
 
 	private static final long serialVersionUID = 1L;

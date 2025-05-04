@@ -1,10 +1,12 @@
 package com.backend.montreal.entity;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+
 public class Login {
 
 	private String username;
@@ -25,5 +27,7 @@ public class Login {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
 
 }
