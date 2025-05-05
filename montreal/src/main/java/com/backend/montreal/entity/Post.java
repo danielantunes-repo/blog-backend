@@ -2,8 +2,6 @@ package com.backend.montreal.entity;
 
 import java.util.Date;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -18,8 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@EntityScan(basePackages = "com.backend.montreal.model") // Altere para o pacote correto
-@EnableJpaRepositories(basePackages = "com.backend.montreal.repository")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Post {
